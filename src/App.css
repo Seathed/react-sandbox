@@ -39,3 +39,7 @@
     transform: rotate(-360deg);
   }
 }
+
+.content h1 {
+  color: #e27d60;
+}
