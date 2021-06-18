@@ -19,6 +19,7 @@ const Home = () => {
                     <div className="event-preview" key={e.id}>
                         <h2>{ e.title }</h2>
                         <p>Hosted by: { e.host }</p>
+                        <p>{ e.body }</p>
                     </div>
                 ))}
             </div>
