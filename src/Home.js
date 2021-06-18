@@ -2,21 +2,26 @@ import { useState } from 'react';
 
 const Home = () => {
 
-    const [pageStateText, setPageStateText] = useState("Hello, this is the default page state.");
+    const [events, setEvents] = useState([
+        {title: "First Event", body: "lorem ipsum...", host: "Liam", id: 1},
+        {title: "Second Event", body: "lorem ipsum...", host: "Liam", id: 2},
+        {title: "Third Event", body: "lorem ipsum...", host: "Liam", id: 3},
+    ]);
 
-    const handleClick = () => {
-        console.log("Button clicked...");
-    }
-    const handleClick2 = () => {
-        setPageStateText("Hello, this is the modified page state.");
-    }
+    const [pageStateText, setPageStateText] = useState("Hello, this is the default page state.");
 
     return ( 
         <div className="home">
             <h2>Homepage</h2>
             <p>{ pageStateText }</p>
-            <button onClick={ handleClick }>Button</button>
-            <button onClick={ handleClick2 }>Change Page State</button>
+            <div className="eventWrapper">
+                {events.map((e) => (
+                    <div className="event-preview" key={e.id}>
+                        <h2>{ e.title }</h2>
+                        <p>Hosted by: { e.host }</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
