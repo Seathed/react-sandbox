@@ -51,6 +51,10 @@
   margin-bottom: 8px;
 }
 
+.event-preview a {
+  text-decoration: none;
+}
+
 /* Buttons */
 .btn {
   text-decoration: none;
