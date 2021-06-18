@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 import EventWrapper from './EventWrapper';
 
 const Home = () => {
@@ -16,6 +17,11 @@ const Home = () => {
     }
 
     const [pageStateText, setPageStateText] = useState("Hello, this is the default page state.");
+
+    // [] only runs on initial page render
+    useEffect(() => {
+        console.log('use effect ran');
+    }, [events]);
 
     return ( 
         <div className="home">
