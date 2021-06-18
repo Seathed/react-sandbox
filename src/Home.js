@@ -14,11 +14,14 @@ const Home = () => {
     // [events] runs on initial page render and anytime the events variable changes
     useEffect(() => {
          fetch('http://localhost:8000/events').then((res) => {
+             if(!res.ok) {
+                throw Error('Could not fetch events from server.');
+             }
              return res.json();
          }).then((data) => {
               setEvents(data);
               setIsLoading(false);
-         }).catch((e) => {
+         }).catch((err) => {
             console.log(err.message);
          })
     }, []);
