@@ -7,7 +7,9 @@ const useFetch = (resource) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(resource).then((res) => {
+        const abort = new AbortController();
+
+        fetch(resource, { signal:abort.signal }).then((res) => {
             if(!res.ok) {
                throw Error('Could not fetch events from server.');
             }
@@ -20,7 +22,8 @@ const useFetch = (resource) => {
            setError(err.message);
            setIsLoading(false);
         })
-   }, []);
+        return () => abort.abort;
+   }, [resource]);
 
    return {data, isLoading, error};
 }
