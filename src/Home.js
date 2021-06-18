@@ -1,34 +1,15 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import EventWrapper from './EventWrapper';
+import useFetch from './useFetch';
 
 const Home = () => {
-
-    const [events, setEvents] = useState(null);
-
-    const [isLoading, setIsLoading] = useState(true);
-
     const [pageStateText, setPageStateText] = useState("Hello, this is the default page state.");
 
-    const [error, setError] = useState(null);
+    const {data:events, isLoading, error} = useFetch('http://localhost:8000/events');
 
     // [] only runs on initial page render
     // [events] runs on initial page render and anytime the events variable changes
-    useEffect(() => {
-         fetch('http://localhost:8000/events2').then((res) => {
-             if(!res.ok) {
-                throw Error('Could not fetch events from server.');
-             }
-             return res.json();
-         }).then((data) => {
-              setEvents(data);
-              setIsLoading(false);
-              setError(null);
-         }).catch((err) => {
-            setError(err.message);
-            setIsLoading(false);
-         })
-    }, []);
 
     return ( 
         <div className="home">
