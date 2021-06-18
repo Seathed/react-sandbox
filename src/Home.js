@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import EventWrapper from './EventWrapper';
 
 const Home = () => {
 
@@ -14,14 +15,7 @@ const Home = () => {
         <div className="home">
             <h2>Homepage</h2>
             <p>{ pageStateText }</p>
-            <div className="eventWrapper">
-                {events.map((e) => (
-                    <div className="event-preview" key={e.id}>
-                        <h2>{ e.title }</h2>
-                        <p>Hosted by: { e.host }</p>
-                    </div>
-                ))}
-            </div>
+            <EventWrapper events={events} />
         </div>
     );
 }
