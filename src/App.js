@@ -11,17 +11,17 @@ function App() {
       <Navbar />
       <div className="content">
         <Switch>
-          <Route path="/calendar">
+        <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/events">
+          <Route exact path="/calendar">
             <Home />
           </Route>
-          <Route path="/create-event">
+          <Route exact path="/events">
+            <Home />
+          </Route>
+          <Route exact path="/events/create">
             <CreateEvent />
-          </Route>
-          <Route path="/">
-            <Home />
           </Route>
         </Switch>
         </div>

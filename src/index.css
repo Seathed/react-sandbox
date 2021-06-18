@@ -51,5 +51,19 @@
   margin-bottom: 8px;
 }
 
+/* Buttons */
+.btn {
+  text-decoration: none;
+  float: right;
+  font-weight: bold;
+  border-radius: 15px;
+  background-color: #f1356d;
+  padding: 7px;
+}
+
+.btn:hover {
+  background-color: #f56d96;
+  border: 1px solid black;
+}
 
 
