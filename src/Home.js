@@ -13,19 +13,21 @@ const Home = () => {
     // [] only runs on initial page render
     // [events] runs on initial page render and anytime the events variable changes
     useEffect(() => {
-        fetch('http://localhost:8000/events').then((res) => {
-            return res.json();
-        }).then((data) => {
-            setEvents(data);
-            setIsLoading(false);
-        });
+         fetch('http://localhost:8000/events').then((res) => {
+             return res.json();
+         }).then((data) => {
+              setEvents(data);
+              setIsLoading(false);
+         }).catch((e) => {
+            console.log(err.message);
+         })
     }, []);
 
     return ( 
         <div className="home">
             <h2>Homepage</h2>
             <p>{ pageStateText }</p>
-            {isLoading && <p>"Fetching Events...</p>}
+            {isLoading && <p>Fetching Events...</p>}
             {events && <EventWrapper events={events} title="All Events"/>}
             {/*events && <EventWrapper events={events.filter((e) => e.host === 'Liam')} title="Liam's Events"/>*/}
         </div>
