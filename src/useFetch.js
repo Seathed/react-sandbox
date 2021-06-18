@@ -19,8 +19,12 @@ const useFetch = (resource) => {
              setIsLoading(false);
              setError(null);
         }).catch((err) => {
-           setError(err.message);
-           setIsLoading(false);
+            if(err.name === 'AbortError') {
+                console.log('fetch aborted');
+            } else {
+                setError(err.message);
+                setIsLoading(false);
+            }
         })
         return () => abort.abort;
    }, [resource]);

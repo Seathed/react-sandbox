@@ -1,6 +1,8 @@
 import Navbar from './Navbar';
 import Home from './Home';
+import Events from './Events';
 import CreateEvent from './CreateEvent';
+import EventDetails from './EventDetails';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -17,7 +19,10 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/events">
-            <Home />
+            <Events />
+          </Route>
+          <Route exact path="/events/:id">
+            <EventDetails />
           </Route>
           <Route exact path="/events/create">
             <CreateEvent />
