@@ -6,6 +6,8 @@ const Home = () => {
 
     const [events, setEvents] = useState(null);
 
+    const [isLoading, setIsLoading] = useState(true);
+
     const [pageStateText, setPageStateText] = useState("Hello, this is the default page state.");
 
     // [] only runs on initial page render
@@ -15,6 +17,7 @@ const Home = () => {
             return res.json();
         }).then((data) => {
             setEvents(data);
+            setIsLoading(false);
         });
     }, []);
 
@@ -22,8 +25,9 @@ const Home = () => {
         <div className="home">
             <h2>Homepage</h2>
             <p>{ pageStateText }</p>
+            {isLoading && <p>"Fetching Events...</p>}
             {events && <EventWrapper events={events} title="All Events"/>}
-            {events && <EventWrapper events={events.filter((e) => e.host === 'Liam')} title="Liam's Events"/>}
+            {/*events && <EventWrapper events={events.filter((e) => e.host === 'Liam')} title="Liam's Events"/>*/}
         </div>
     );
 }
