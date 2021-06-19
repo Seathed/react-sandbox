@@ -3,6 +3,7 @@ import Home from './Home';
 import Events from './Events';
 import CreateEvent from './CreateEvent';
 import EventDetails from './EventDetails';
+import E404 from './E404';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route exact path="/events/:id">
             <EventDetails />
+          </Route>
+          <Route path="*">
+            <E404 />
           </Route>
         </Switch>
         </div>
