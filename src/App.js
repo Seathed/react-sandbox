@@ -21,11 +21,11 @@ function App() {
           <Route exact path="/events">
             <Events />
           </Route>
-          <Route exact path="/events/:id">
-            <EventDetails />
-          </Route>
           <Route exact path="/events/create">
             <CreateEvent />
+          </Route>
+          <Route exact path="/events/:id">
+            <EventDetails />
           </Route>
         </Switch>
         </div>

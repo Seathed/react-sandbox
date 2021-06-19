@@ -92,3 +92,39 @@
   cursor: pointer;
 }
 
+/* Create Event Form */
+.create-event {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.create-event label {
+  text-align: left;
+  display: block;
+}
+
+.create-event h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 30px;
+}
+
+.create-event input, .create-event textarea, .create-event select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+
+.create-event button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
