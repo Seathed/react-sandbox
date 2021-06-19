@@ -5,11 +5,25 @@ const CreateEvent = () => {
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
     const [host, setHost] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const event = { title, startTime, endTime, host };
+        setIsLoading(true);
+        fetch('http://localhost:8000/events', {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify(event)
+        }).then(() => {
+            setIsLoading(false);
+        } )
+    }
 
     return ( 
         <div className="create-event">
             <h2>Create a New Event</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Event Title:</label>
                 <input 
                 type="text"
@@ -37,7 +51,8 @@ const CreateEvent = () => {
                 value={ host }
                 onChange={(e) => {setHost(e.target.value)}}
                 />
-                <button>Create Event</button>
+                { !isLoading && <button>Create Event</button> }
+                { isLoading && <button disabled>Adding Event...</button> }
             </form>
         </div>
     );
