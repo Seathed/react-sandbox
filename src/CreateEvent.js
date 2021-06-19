@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from 'react-router-dom';
 
 const CreateEvent = () => {
     const [title, setTitle] = useState('');
@@ -6,6 +7,7 @@ const CreateEvent = () => {
     const [endTime, setEndTime] = useState('');
     const [host, setHost] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,9 +17,13 @@ const CreateEvent = () => {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(event)
-        }).then(() => {
+        }).then((res) => {
+            return res.json();
+        }).then((data) => {
+            const id = data.id;
             setIsLoading(false);
-        } )
+            history.push(`/events/${ id }`);
+        })
     }
 
     return ( 
