@@ -1,5 +1,6 @@
 import Navbar from './Navbar';
 import Home from './Home';
+import Calendar from './Calendar';
 import Events from './Events';
 import CreateEvent from './CreateEvent';
 import EventDetails from './EventDetails';
@@ -17,7 +18,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/calendar">
-            <Home />
+            <Calendar />
           </Route>
           <Route exact path="/events">
             <Events />
