@@ -1,13 +1,14 @@
-import dateFns from "date-fns";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from '@syncfusion/ej2-react-schedule';
 
-const Calendar = () => {
-    return ( 
-        <div className="calendar">
-            <div>Header</div>
-            <div>Days</div>
-            <div>Cells</div>
-        </div>
-    );
+class Calendar extends React.Component {
+
+    render() {
+        return <ScheduleComponent>
+        <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
+        </ScheduleComponent>
+}
 }
  
 export default Calendar;
